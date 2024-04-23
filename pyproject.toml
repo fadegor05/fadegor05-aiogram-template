@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "fadegor05-aiogram-template"
+version = "0.1.0"
+description = ""
+authors = ["fadegor05 <fad.egor05@gmail.com>"]
+license = "MIT License"
+readme = "README.md"
+packages = [{include = "fadegor05_aiogram_template"}]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+aiogram = "^3.5.0"
+python-dotenv = "^1.0.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
