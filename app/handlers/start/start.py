@@ -1,9 +1,16 @@
 from aiogram.filters import CommandStart
 from aiogram.types import Message
 
+from app.crud.user import get_user_by_telegram_id, create_user
+from app.database import async_session
 from app.handlers.router import router
+from app.models.user import User
 
 
 @router.message(CommandStart())
 async def start_handler(message: Message):
-    await message.answer("Hello, World!")
+    async with async_session() as session:
+        user: User = await get_user_by_telegram_id(session, message.from_user.id)
+        if not user:
+            user = await create_user(session, message.from_user.id)
+        await message.answer(f'Hello, {message.from_user.first_name}, your id in DB is {user.id}!')
