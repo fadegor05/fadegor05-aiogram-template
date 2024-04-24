@@ -5,11 +5,12 @@ import sys
 from aiogram import Bot, Dispatcher
 
 from app.core.config import BOT_TOKEN
+from app.database import db_init
 from app.handlers.router import router
 
 
 async def main() -> None:
-    #await db_init()
+    await db_init()
 
     bot = Bot(token=BOT_TOKEN)
     dp = Dispatcher()
